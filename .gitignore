@@ -3,3 +3,4 @@
 *.json
 *.pkl
 *.bin
+.DS_Store
