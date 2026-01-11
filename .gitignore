@@ -1,0 +1,5 @@
+/books_index/
+*.db
+*.json
+*.pkl
+*.bin
