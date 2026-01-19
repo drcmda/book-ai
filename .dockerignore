@@ -1,0 +1,26 @@
+# Don't copy these into the Docker image
+# They will be mounted at runtime via docker-compose.yml volume mounts
+books/
+books_index/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.git/
+.gitignore
+.vscode/
+.idea/
+*.md
+!README.md
+.DS_Store
+*.log
+.env
+venv/
+env/
+.venv/

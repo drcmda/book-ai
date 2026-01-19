@@ -1,0 +1,22 @@
+# Core LlamaIndex packages
+llama-index-core
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+llama-index-readers-file
+llama-index-retrievers-bm25
+
+# Embedding and ML models
+sentence-transformers
+torch
+
+# Document processing
+unstructured[local-inference]
+python-docx
+beautifulsoup4
+pypdf
+pytesseract
+pillow_heif
+
+# UI and utilities
+rich
+tqdm

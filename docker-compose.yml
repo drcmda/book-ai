@@ -1,0 +1,49 @@
+services:
+  # Ollama service - provides the LLM
+  ollama:
+    image: ollama/ollama:latest
+    container_name: book-ai-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      # Persist Ollama models between restarts
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 40s
+    # Uncomment the following lines if you have an NVIDIA GPU
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  # Book AI service - provides RAG and chat interface
+  book-ai:
+    build: .
+    container_name: book-ai-chat
+    depends_on:
+      ollama:
+        condition: service_healthy
+    volumes:
+      # Mount your books directory (READ ONLY for safety)
+      - ./books:/app/books:ro
+      # Persist the index between restarts
+      - ./books_index:/app/books_index
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    # Uncomment to expose web interface (if you add one later)
+    # ports:
+    #   - "8080:8080"
+
+volumes:
+  # Named volume for Ollama models
+  ollama_data:
