@@ -50,10 +50,10 @@ ollama pull qwen3:8b
 brew install tesseract poppler
 
 # Linux (Ubuntu/Debian):
-sudo apt-get install tesseract-ocr poppler-utils
+# sudo apt-get install tesseract-ocr poppler-utils
 
 # Linux (Fedora/RHEL):
-sudo dnf install tesseract poppler-utils
+# sudo dnf install tesseract poppler-utils
 
 # Windows:
 # 1. Install Tesseract from: https://github.com/UB-Mannheim/tesseract/wiki
